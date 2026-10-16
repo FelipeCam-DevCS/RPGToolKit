@@ -3,9 +3,9 @@ import random
 class gen_dice_model():
     def __init__(self):
         self._dices_generated_last_to_first = []
-        self._dices_generated_small_to_largest = []
-        self._dices_generated_largest_to_small = []
         self._dices_generated_first_to_last = []
+        self._dices_generated_largest_to_small = []
+        self._dices_generated_small_to_largest = []
 
 
 
@@ -37,14 +37,11 @@ class gen_dice_model():
         '''
 
         if len(copy_last_to_first_dice) > 1:
-            for i in range(len(copy_last_to_first_dice)):
-                i = 0
-                for j in range(len(copy_last_to_first_dice)):
-                    if copy_last_to_first_dice[i][0] > copy_last_to_first_dice[i+1][0]:
-                        copy_last_to_first_dice[i][0], copy_last_to_first_dice[i+1][0] = copy_last_to_first_dice[i+1][0] , copy_last_to_first_dice[i][0]
-                i+=1
-                if i == len(copy_last_to_first_dice)-1:
-                    break
+            for i in range(len(copy_last_to_first_dice)-1):
+                for j in range(len(copy_last_to_first_dice)-1-i):
+                    if copy_last_to_first_dice[j][0] < copy_last_to_first_dice[j+1][0]:
+                        copy_last_to_first_dice[j], copy_last_to_first_dice[j+1] = copy_last_to_first_dice[j+1] , copy_last_to_first_dice[j]
+
             #Reatribui todos os valores substituido pela ordenação depois ver se tem como otimizar solução provisoria
             self._dices_generated_largest_to_small[:] = copy_last_to_first_dice
         else:
@@ -67,7 +64,17 @@ class gen_dice_model():
         self._dices_generated.clear()
 
     @property
-    def get_dices_generated(self):
-        return self._dices_generated
+    def get_dices_first_to_last(self):
+        return self._dices_generated_first_to_last
     
+    @property
+    def get_dice_last_to_first(self):
+        return self._dices_generated_last_to_first
 
+    @property
+    def get_dice_largest_to_small(self):
+        return self._dices_generated_largest_to_small
+    
+    @property
+    def get_dice_small_to_largest(self):
+        return self._dices_generated_small_to_largest

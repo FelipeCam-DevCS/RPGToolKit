@@ -8,7 +8,7 @@ while True:
     if a == 5:
         break
 
-print(f"self._dices_generated_last_to_first \n{gdm._dices_generated_last_to_first}")
-print(f"self._dices_generated_small_to_largest \n{gdm._dices_generated_small_to_largest}")
-print(f"self._dices_generated_largest_to_small \n {gdm._dices_generated_largest_to_small}")
-print(f"self._dices_generated_first_to_last \n {gdm._dices_generated_first_to_last}")
+print(f"get_dices_first_to_last \n{gdm.get_dices_first_to_last}")
+print(f"get_dice_last_to_first \n{gdm.get_dice_last_to_first}")
+print(f"dice_largest_to_small \n {gdm.get_dice_largest_to_small}")
+print(f"get_dice_small_to_largest \n {gdm.get_dice_small_to_largest}")
