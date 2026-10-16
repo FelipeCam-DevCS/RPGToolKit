@@ -36,7 +36,6 @@ class gen_dice_model():
         Bubble sort simples para ordenação depois procurar como otimizar
         '''
 
-        #Fazer bubble sort ainda (não esta funcionando)
         if len(copy_last_to_first_dice) > 1:
             for i in range(len(copy_last_to_first_dice)):
                 i = 0
