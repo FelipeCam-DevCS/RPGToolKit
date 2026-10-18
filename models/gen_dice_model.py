@@ -61,7 +61,11 @@ class gen_dice_model():
         
 
     def clear_dice_historical(self):
-        self._dices_generated.clear()
+        #Limpa os registros do historioco
+        self._dices_generated_last_to_first[:] = []
+        self._dices_generated_first_to_last[:] = []
+        self._dices_generated_largest_to_small[:] = []
+        self._dices_generated_small_to_largest[:] = []
 
     @property
     def get_dices_first_to_last(self):

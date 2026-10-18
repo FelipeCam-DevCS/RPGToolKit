@@ -1,19 +1,23 @@
 import models.gen_dice_model
 import controllers.gen_dice_controller
+import models.export_import_historical_model
+import excepts.excepts
 
 gdm = models.gen_dice_model.gen_dice_model()
 crdc = controllers.gen_dice_controller.ran_dice_controller(gdm)
+exp = excepts.excepts
+ioh = models.export_import_historical_model.historical_IO(gdm,exp)
 
 
 
 a=0
 while True:
-    crdc.gen_dice(2,4,0)
+    crdc.generate_dice(2,4,0)
     a+=1
-    if a == 10:
+    if a == 5:
         break
 
-print(crdc.get_historical)
+print(crdc.get_dices_historical)
 print()
-crdc.clear_historical
-print(crdc.get_historical)
+ioh.save_txt_historical()
+ioh.clean_txt_historical_last_to_first()
