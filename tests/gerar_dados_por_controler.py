@@ -17,7 +17,6 @@ while True:
     if a == 5:
         break
 
-print(crdc.get_dices_historical)
-print()
+print(crdc.get_dices_historical_first_to_last)
+print(ioh.program_user_data_dir)
 ioh.save_txt_historical()
-ioh.clean_txt_historical_last_to_first()
