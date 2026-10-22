@@ -5,3 +5,7 @@ class IO_Deny_Access_Error(Exception): pass
 
 #Erro de arquivo ou qualquer coisa a ser manipulada não existir no momento
 class IO_Dont_Exist_Error(Exception): pass
+
+class IO_Invalid_Path(Exception): pass
+
+class IO_Invalid_integrity(Exception): pass

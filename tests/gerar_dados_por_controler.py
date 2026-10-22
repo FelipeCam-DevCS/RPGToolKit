@@ -18,5 +18,5 @@ while True:
         break
 
 print(crdc.get_dices_historical_first_to_last)
-print(ioh.program_user_data_dir)
 ioh.save_txt_historical()
+print(ioh.load_txt_historical())
