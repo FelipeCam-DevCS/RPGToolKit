@@ -22,9 +22,15 @@ class historical_IO:
         try:
             if not pathlib.Path(path_save).exists():
                 pathlib.Path(f"{path_save}/saves").mkdir(parents=True)
-            with open(pathlib.Path(f"{path_save}/saves/save_historical_dices.txt") , 'a', encoding='utf-8') as historical_file:
-                for value in self.obj_dice_model.get_dices_first_to_last:
-                    historical_file.write(str(f"{value}\n"))
+
+            if not pathlib.Path(f"{path_save}/saves/save_historical_dices.txt").is_file():
+                with open(pathlib.Path(f"{path_save}/saves/save_historical_dices.txt") , 'a', encoding='utf-8') as historical_file:
+                    for value in self.obj_dice_model._dices_generated_first_to_last:
+                        historical_file.write(str(f"{value}\n"))
+            else:
+                with open(pathlib.Path(f"{path_save}/saves/save_historical_dices.txt") , 'w', encoding='utf-8') as historical_file:
+                                    for value in self.obj_dice_model._dices_generated_first_to_last:
+                                        historical_file.write(str(f"{value}\n"))
         except PermissionError:
              raise self._excepts.IO_Deny_Access_Error
         except IOError:
@@ -32,9 +38,9 @@ class historical_IO:
              
 
 
-    def clean_txt_historical(self):
-        if pathlib.Path(f"{self.program_user_data_dir}/saves/save_historical_dices.txt").exists():
-            with open(pathlib.Path(f"{self.program_user_data_dir}/saves/save_historical_dices.txt"), 'w') as historical_file:
+    def clear_txt_historical(self):
+        if pathlib.Path(f"{self._program_user_data_path}/saves/save_historical_dices.txt").exists():
+            with open(pathlib.Path(f"{self._program_user_data_path}/saves/save_historical_dices.txt"), 'w') as historical_file:
                 pass
         else:
             raise self._excepts.IO_Dont_Exist_Error
